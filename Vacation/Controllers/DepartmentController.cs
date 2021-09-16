@@ -44,7 +44,15 @@ namespace Vacation.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DepartmentModel>>> GetAll()
         {
+            var departments = await _service.GetAll();
+            return Ok(departments);
+        }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<DepartmentModel>>> GetAll([FromRoute]int id)
+        {
+            var departments = await _service.GetById(id);
+            return Ok(departments);
         }
     }
 }

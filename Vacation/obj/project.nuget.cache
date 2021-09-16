@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j0HzWB+cLPy7ldhBixvpwBOLPMDd5cWlvkokh3NvhLKE2LMZ4YFCqM4dKq9gTt+fWXxgKie9HLNY+gM0eHC5pQ==",
+  "dgSpecHash": "JuKyu3OIvzYzqDMlKLwrMUbNaZaJXV0Jk4tfQNtuXSlMoHVhUJGeFRj1UI2YcxdMM2Geim9A/WX6kMpzFU/iZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Desktop\\Vacation\\Vacation\\Vacation\\Vacation.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\Vacation\\Vacation\\Vacation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",

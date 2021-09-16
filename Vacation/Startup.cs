@@ -43,8 +43,11 @@ namespace Vacation
             services.AddControllers();
 
             services.AddScoped<IValidator<CreateUserModel>,CreateUserModelValidator>();
+
+            //services
             services.AddScoped<IUserService,UserService>();
             services.AddScoped<IDepartmentService,DepartmentService>();
+            services.AddScoped<IJobTitleService,JobTitleService>();
 
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddControllers().AddFluentValidation();

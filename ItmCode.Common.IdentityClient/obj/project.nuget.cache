@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2Hds/hHJuF2+EOKXKvPwJzb/gQwNuei6dONBExQsU7+MvQ1J6rYLyL8WijecDFjBKTACRH6QGlM1oF8VQq37kw==",
+  "dgSpecHash": "HtW/rCVxvz8GYlXPnOygONT/iD4w9tyFOrkG8C8bWWNJ7DHd/NoNxvXyjLe6gdlROJmmSrxVMGncBtvMKem/qg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Desktop\\Vacation\\Vacation\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

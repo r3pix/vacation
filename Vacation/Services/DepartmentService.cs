@@ -55,8 +55,26 @@ namespace Vacation.Services
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<DepartmentModel>> GetAll()
+        {
+            var departments = await _dbContext.Departments.ToListAsync();
 
+            var result = _mapper.Map<List<DepartmentModel>>(departments);
 
-        
+            return result;
+        }
+
+        public async Task<DepartmentModel> GetById(int id)
+        {
+            var department = await _dbContext.Departments.FirstOrDefaultAsync(x => x.Id == id);
+            if (department is null)
+            {
+                throw new NotFoundException("Not found");
+            }
+            var result = _mapper.Map<DepartmentModel>(department);
+
+            return result;
+        }
+
     }
 }

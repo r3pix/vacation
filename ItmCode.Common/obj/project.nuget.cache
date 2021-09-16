@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uA65bE44wU/7TRqjPQFyKgqDmljFDAELT1QV2AkfbBCS+g9xUciorwztz2fttORNloKSsomA123YzPYay/49GA==",
+  "dgSpecHash": "vxDLfDCan1S4YZBPjct4cx0psjP9uOc8nN2M+tKTJ1rGSHo5HbV+lYTWyPh6XSQB3/f/WBHfIc/+J/jUkbGU1Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Desktop\\Vacation\\Vacation\\ItmCode.Common\\ItmCode.Common.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common\\ItmCode.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.6\\microsoft.aspnetcore.cryptography.internal.3.1.6.nupkg.sha512",
