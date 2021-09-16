@@ -1,0 +1,13 @@
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\bin\Debug\netcoreapp3.1\ItmCode.Common.Identity.deps.json
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\bin\Debug\netcoreapp3.1\ItmCode.Common.Identity.dll
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\bin\Debug\netcoreapp3.1\ItmCode.Common.Identity.pdb
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\bin\Debug\netcoreapp3.1\ItmCode.Common.dll
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\bin\Debug\netcoreapp3.1\ItmCode.Common.pdb
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\obj\Debug\netcoreapp3.1\ItmCode.Common.Identity.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\obj\Debug\netcoreapp3.1\ItmCode.Common.Identity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\obj\Debug\netcoreapp3.1\ItmCode.Common.Identity.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\obj\Debug\netcoreapp3.1\ItmCode.Common.Identity.AssemblyInfo.cs
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\obj\Debug\netcoreapp3.1\ItmCode.Common.Identity.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\obj\Debug\netcoreapp3.1\ItmCode.Common.Identity.csproj.CopyComplete
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\obj\Debug\netcoreapp3.1\ItmCode.Common.Identity.dll
+C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common.IdentityClient\obj\Debug\netcoreapp3.1\ItmCode.Common.Identity.pdb

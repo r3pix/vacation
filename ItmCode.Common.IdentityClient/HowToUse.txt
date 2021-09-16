@@ -1,0 +1,33 @@
+﻿How to use this module
+
+1. Add following in the Startup.cs:
+
+   public void Configure(IApplicationBuilder app)
+   {
+        ...
+        app.UseAuthorization().UseAuthentication();
+        ...
+   }
+
+   public void ConfigureServices(IServiceCollection services)
+   {
+       ...
+       services.ConfigureIdentity(Configuration);       
+       ...
+   };
+
+2. Add following section in your project's appsettings.json:
+
+  "Identity": {
+    "Url": "http://test.test-identity.tk", //Your IdentityServer address
+    "Audience": "m24ApiLocal" //Your resource name
+  },
+
+3. Use HasPermission attribute if you want to restrict access only for users with specific permission.
+
+Example
+  [HasPermission(AppPermission.UserChange)]
+  public async Task<ActionResult> Delete([FromRoute] DeleteWorkflowCommand command)
+  {
+        return await ExecuteCommand(async () => await Mediator.Send(command));
+  }
