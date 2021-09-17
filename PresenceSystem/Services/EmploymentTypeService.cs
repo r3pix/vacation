@@ -38,7 +38,7 @@ namespace PresentSystem.Services
             var type = await _dbContext.EmploymentTypes.FirstOrDefaultAsync(x => x.Id == id);
             if (type is null)
             {
-                throw new NotFoundException("Not found");
+                throw new NotFoundException("Employment type with provided credentials does not exist");
             }
 
             _dbContext.EmploymentTypes.Remove(type);
@@ -50,7 +50,7 @@ namespace PresentSystem.Services
             var type = await _dbContext.EmploymentTypes.FirstOrDefaultAsync(x=>x.Id == id);
             if (type is null)
             {
-                throw new NotFoundException("Not found");
+                throw new NotFoundException("Employment type with provided credentials does not exist");
             }
 
             type.Type = model.Type;
@@ -74,7 +74,7 @@ namespace PresentSystem.Services
             var type = await _dbContext.EmploymentTypes.FirstOrDefaultAsync(x => x.Id == id);
             if (type is null)
             {
-                throw new NotFoundException("Not found");
+                throw new NotFoundException("Employment type with provided credentials does not exist");
             }
 
             var typeMapped = _mapper.Map<EmploymentTypeModel>(type);

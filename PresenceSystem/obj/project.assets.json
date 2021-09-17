@@ -6678,11 +6678,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\Vacation\\PresenceSystem\\PresenceSystem.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\PresenceSystem\\PresenceSystem\\PresenceSystem.csproj",
       "projectName": "PresenceSystem",
-      "projectPath": "C:\\Users\\admin\\Desktop\\Vacation\\PresenceSystem\\PresenceSystem.csproj",
+      "projectPath": "C:\\Users\\admin\\Desktop\\PresenceSystem\\PresenceSystem\\PresenceSystem.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\Vacation\\PresenceSystem\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\PresenceSystem\\PresenceSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -6703,8 +6703,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj": {
-              "projectPath": "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj"
+            "C:\\Users\\admin\\Desktop\\PresenceSystem\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\PresenceSystem\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj"
             }
           }
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using PresenceSystem.Models;
+using Vacation.Entities;
 using Vacation.Models;
 
 namespace Vacation.Services
@@ -11,5 +12,6 @@ namespace Vacation.Services
         Task Delete(int id);
         Task Update(UpdateUserModel model, int id);
         Task<IEnumerable<UserTableModel>> GetAll();
+        Task<UserTableModel> GetById(int id);
     }
 }

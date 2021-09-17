@@ -59,6 +59,19 @@ namespace Vacation.Services
             return mappedResults;
         }
 
+        public async Task<UserTableModel> GetById(int id)
+        {
+            var result = await _dbContext.Users.Include(x => x.Department)
+                .Include(x => x.EmploymentType).Include(x => x.JobTitle)
+                .FirstOrDefaultAsync(c => c.Id == id);
+            if (result is null)
+            {
+                throw new NotFoundException("User with provided credentials could not be found");
+            }
+            var mappedResult = _mapper.Map<UserTableModel>(result);
+            return mappedResult;
+        }
+
         public async Task Update(UpdateUserModel model, int id)
         {
             //sprawdz czy istnieje identity

@@ -52,6 +52,13 @@ namespace Vacation.Controllers
             return Ok(results);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserTableModel>> GetById([FromRoute] int id)
+        {
+            var result = await _service.GetById(id);
+            return Ok(result);
+        }
+
 
     }
 }

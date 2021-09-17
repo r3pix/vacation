@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6E76F3vuyenSAd5kNNDbR8clb3V20pn/HM58Fg/sdtB4gQJGIkM32++akd9q0lO65A0QIFq+kGxh8leJsRsRXQ==",
+  "dgSpecHash": "92dZdygmg7dqjypSy7hpA9sNK7iTKx3kNQ6fb5X9Ns9KPBwfkbhaYj909CnezVTyLS5q0ZDo9mWFmGDk2cDSig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Desktop\\Vacation\\PresenceSystem\\PresenceSystem.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\PresenceSystem\\PresenceSystem\\PresenceSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
