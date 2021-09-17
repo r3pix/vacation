@@ -14,7 +14,7 @@ namespace Vacation.Entities
         public int DepartmentId { get; set; }
         //public int VacationDays { get; set; }
         public string Email { get; set; }
-        //dobazy
+        
         public int EmploymentTypeId { get; set; }
         public DateTime DateModified { get; set; }
         public DateTime DateCreated { get; set; }

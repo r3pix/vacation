@@ -16,10 +16,10 @@ namespace Vacation
         {
             CreateMap<CreateUserModel, User>()
                 .ForMember(x => x.Email, m => m.MapFrom(c => c.Email))
-                .ForMember(x => x.Department, m => m.MapFrom(c => c.Department))
+                .ForMember(x => x.DepartmentId, m => m.MapFrom(c => c.DepartmentId))
                 .ForMember(x => x.DisplayName, m => m.MapFrom(c => c.DisplayName))
-                .ForMember(x => x.EmploymentType, m => m.MapFrom(c => c.EmploymentType))
-                .ForMember(x=>x.JobTitle,m=>m.MapFrom(c=>c.JobTitle));
+                .ForMember(x => x.EmploymentTypeId, m => m.MapFrom(c => c.EmploymentTypeId))
+                .ForMember(x=>x.JobTitleId,m=>m.MapFrom(c=>c.JobTitleId));
 
 
             CreateMap<CreateDepartmentModel, Department>()
@@ -33,6 +33,17 @@ namespace Vacation
 
             CreateMap<EmploymentType, EmploymentTypeModel>()
                 .ForMember(x => x.Type, m => m.MapFrom(c => c.Type));
+
+            CreateMap<User, UserTableModel>()
+                .ForMember(x => x.CreatedById, m => m.MapFrom(c => c.CreatedById))
+                .ForMember(x => x.DateCreated, m => m.MapFrom(c => c.DateCreated))
+                .ForMember(x => x.DateModified, m => m.MapFrom(c => c.DateModified))
+                .ForMember(x => x.Department, m => m.MapFrom(c => c.Department.DepartmentName))
+                .ForMember(x => x.DisplayName, m => m.MapFrom(c => c.DisplayName))
+                .ForMember(x => x.Email, m => m.MapFrom(c => c.Email))
+                .ForMember(x => x.EmploymentType, m => m.MapFrom(c => c.EmploymentType.Type))
+                .ForMember(x => x.JobTitle, m => m.MapFrom(c => c.JobTitle.TitleName))
+                .ForMember(x=>x.ModifiedById,m=>m.MapFrom(c=>c.ModifiedById));
         }
             
     }
