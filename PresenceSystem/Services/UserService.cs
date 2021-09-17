@@ -79,7 +79,7 @@ namespace Vacation.Services
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
             if (user is null)
             {
-                throw new NotFoundException("Not found");
+                throw new NotFoundException("User with provided credentials could not be found");
             }
 
             user.DateModified=DateTime.Now;

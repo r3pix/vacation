@@ -34,7 +34,7 @@ namespace Vacation.Services
             var department = await _dbContext.Departments.FirstOrDefaultAsync(x => x.Id == id);
             if (department is null)
             {
-                throw new NotFoundException("Not found");
+                throw new NotFoundException("Deparment with provided credentials does not exist");
             }
 
             _dbContext.Departments.Remove(department);
@@ -46,7 +46,7 @@ namespace Vacation.Services
             var department = await _dbContext.Departments.FirstOrDefaultAsync(x=>x.Id == id);
             if (department is null)
             {
-                throw new NotFoundException("Not found");
+                throw new NotFoundException("Deparment with provided credentials does not exist");
             }
 
             department.DepartmentName = model.DepartmentName;
@@ -69,7 +69,7 @@ namespace Vacation.Services
             var department = await _dbContext.Departments.FirstOrDefaultAsync(x => x.Id == id);
             if (department is null)
             {
-                throw new NotFoundException("Not found");
+                throw new NotFoundException("Deparment with provided credentials does not exist");
             }
             var result = _mapper.Map<DepartmentModel>(department);
 
