@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vacation", "Vacation\Vacation.csproj", "{D224CE1F-5647-4DE3-8819-950198EE8B23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresenceSystem", "Vacation\PresenceSystem.csproj", "{D224CE1F-5647-4DE3-8819-950198EE8B23}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItmCode.Common", "ItmCode.Common\ItmCode.Common.csproj", "{13BCE22D-735E-4C15-9AA4-11651106543C}"
 EndProject

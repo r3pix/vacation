@@ -9,7 +9,7 @@ namespace Vacation.Models.Validation
 {
     public class CreateUserModelValidator : AbstractValidator<CreateUserModel>
     {
-        public CreateUserModelValidator(VacationDbContext dbContext)
+        public CreateUserModelValidator(Entities.PresenceSystemDbContext dbContext)
         {
             RuleFor(x => x.Email).NotEmpty().EmailAddress();
             RuleFor(x => x.Password).MinimumLength(4);

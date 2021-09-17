@@ -8,7 +8,7 @@ using Vacation.Entities;
 
 namespace Vacation.Migrations
 {
-    [DbContext(typeof(VacationDbContext))]
+    [DbContext(typeof(PresenceSystemDbContext))]
     partial class VacationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -32,6 +32,21 @@ namespace Vacation.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Departments");
+                });
+
+            modelBuilder.Entity("Vacation.Entities.EmploymentType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmploymentTypes");
                 });
 
             modelBuilder.Entity("Vacation.Entities.JobTitle", b =>
@@ -74,7 +89,7 @@ namespace Vacation.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EmploymentType")
+                    b.Property<int>("EmploymentTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("JobTitleId")
@@ -86,6 +101,8 @@ namespace Vacation.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("EmploymentTypeId");
 
                     b.HasIndex("JobTitleId");
 
@@ -100,6 +117,12 @@ namespace Vacation.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Vacation.Entities.EmploymentType", "EmploymentType")
+                        .WithMany("Users")
+                        .HasForeignKey("EmploymentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Vacation.Entities.JobTitle", "JobTitle")
                         .WithMany("Users")
                         .HasForeignKey("JobTitleId")
@@ -108,10 +131,17 @@ namespace Vacation.Migrations
 
                     b.Navigation("Department");
 
+                    b.Navigation("EmploymentType");
+
                     b.Navigation("JobTitle");
                 });
 
             modelBuilder.Entity("Vacation.Entities.Department", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Vacation.Entities.EmploymentType", b =>
                 {
                     b.Navigation("Users");
                 });

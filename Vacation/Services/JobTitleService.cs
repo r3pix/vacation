@@ -12,10 +12,10 @@ namespace Vacation.Services
 {
     public class JobTitleService : IJobTitleService
     {
-        private readonly VacationDbContext _dbContext;
+        private readonly Entities.PresenceSystemDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public JobTitleService(VacationDbContext dbContext, IMapper mapper)
+        public JobTitleService(Entities.PresenceSystemDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;

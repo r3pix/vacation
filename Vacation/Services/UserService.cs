@@ -10,10 +10,10 @@ namespace Vacation.Services
 {
     public class UserService : IUserService
     {
-        private readonly VacationDbContext _dbContext;
+        private readonly Entities.PresenceSystemDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public UserService(VacationDbContext dbContext, IMapper mapper)
+        public UserService(Entities.PresenceSystemDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;

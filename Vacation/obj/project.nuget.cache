@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "r8SjN98mDP9HIjWiUFkafPizWJuF9GLDA96tWqkqW1LaMNidQbBaIsWIsmiwp67g96x1wcvC6lMaZjLyfCXUEA==",
   "success": true,
   "projectFilePath": "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\Vacation\\Vacation.csproj",
+=======
+  "dgSpecHash": "KXrV6ZiFMo2e83UykMkJkCAzDES3x7kBNXXN8JUqbuVficdgo6OxrDWwutgFEP+zjMS0CTi0IgnvB2a8pox1Ng==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\Vacation\\Vacation\\PresenceSystem.csproj",
+>>>>>>> 26e9b8358723fc29076b28b955ad514cb83d0c36
   "expectedPackageFiles": [
     "C:\\Users\\WiktorMazurczak\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
     "C:\\Users\\WiktorMazurczak\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",

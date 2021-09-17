@@ -6677,11 +6677,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\Vacation\\Vacation.csproj",
       "projectName": "Vacation",
       "projectPath": "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\Vacation\\Vacation.csproj",
       "packagesPath": "C:\\Users\\WiktorMazurczak\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\Vacation\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\Vacation\\Vacation\\PresenceSystem.csproj",
+      "projectName": "PresenceSystem",
+      "projectPath": "C:\\Users\\admin\\Desktop\\Vacation\\Vacation\\PresenceSystem.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\Vacation\\Vacation\\obj\\",
+>>>>>>> 26e9b8358723fc29076b28b955ad514cb83d0c36
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\WiktorMazurczak\\AppData\\Roaming\\NuGet\\NuGet.Config",
