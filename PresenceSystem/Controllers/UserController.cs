@@ -27,5 +27,7 @@ namespace Vacation.Controllers
             var result = await _service.Create(model);
             return Created($"api/User/{result}",null);
         }
+
+
     }
 }
