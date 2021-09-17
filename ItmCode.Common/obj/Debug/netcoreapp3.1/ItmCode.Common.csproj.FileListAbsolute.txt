@@ -8,3 +8,13 @@ C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\
 C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.dll
 C:\Users\admin\Desktop\Vacation\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.pdb
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\bin\Debug\netcoreapp3.1\ItmCode.Common.deps.json
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\bin\Debug\netcoreapp3.1\ItmCode.Common.dll
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\bin\Debug\netcoreapp3.1\ItmCode.Common.pdb
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.AssemblyInfo.cs
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.dll
+C:\Users\admin\Desktop\Vacation\ItmCode.Common\obj\Debug\netcoreapp3.1\ItmCode.Common.pdb

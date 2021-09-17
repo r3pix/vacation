@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Vacation.Entities
 {
-    public class VacationDbContext : DbContext
+    public class PresenceSystemDbContext : DbContext
     {
 
         private string _connectionString = "Server=(localdb)\\LocalDB;Database=Vacation;" +
@@ -14,6 +14,7 @@ namespace Vacation.Entities
         public DbSet<User> Users { get; set; }
         public DbSet<Department>Departments { get; set; }
         public DbSet<JobTitle> JobTitles { get; set; }
+        public DbSet<EmploymentType> EmploymentTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

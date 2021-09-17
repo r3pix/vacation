@@ -16,6 +16,7 @@ using FluentValidation.AspNetCore;
 using ItmCode.Common.Identity.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using PresentSystem.Services;
 using Vacation.Entities;
 using Vacation.Middleware;
 using Vacation.Models;
@@ -39,7 +40,7 @@ namespace Vacation
         {
 
             services.ConfigureIdentity(Configuration);
-            services.AddDbContext<VacationDbContext>();
+            services.AddDbContext<Entities.PresenceSystemDbContext>();
             services.AddControllers();
 
             services.AddScoped<IValidator<CreateUserModel>,CreateUserModelValidator>();
@@ -48,6 +49,7 @@ namespace Vacation
             services.AddScoped<IUserService,UserService>();
             services.AddScoped<IDepartmentService,DepartmentService>();
             services.AddScoped<IJobTitleService,JobTitleService>();
+            services.AddScoped<IEmploymentTypeService,EmploymentTypeService>();
 
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddControllers().AddFluentValidation();
@@ -55,7 +57,7 @@ namespace Vacation
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Vacation", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PresenceSystem", Version = "v1" });
             });
 
             

@@ -9,7 +9,7 @@ using Vacation.Entities;
 
 namespace Vacation.Migrations
 {
-    [DbContext(typeof(VacationDbContext))]
+    [DbContext(typeof(Entities.PresenceSystemDbContext))]
     [Migration("20210915122033_identity-user-added-updated")]
     partial class identityuseraddedupdated
     {

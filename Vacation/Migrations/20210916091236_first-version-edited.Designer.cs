@@ -9,7 +9,7 @@ using Vacation.Entities;
 
 namespace Vacation.Migrations
 {
-    [DbContext(typeof(VacationDbContext))]
+    [DbContext(typeof(Entities.PresenceSystemDbContext))]
     [Migration("20210916091236_first-version-edited")]
     partial class firstversionedited
     {

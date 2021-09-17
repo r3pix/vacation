@@ -13,9 +13,9 @@ namespace Vacation.Services
     public class DepartmentService : IDepartmentService
     {
         private readonly IMapper _mapper;
-        private readonly VacationDbContext _dbContext;
+        private readonly Entities.PresenceSystemDbContext _dbContext;
 
-        public DepartmentService(IMapper mapper,VacationDbContext dbContext)
+        public DepartmentService(IMapper mapper, Entities.PresenceSystemDbContext dbContext)
         {
             _mapper = mapper;
             _dbContext = dbContext;

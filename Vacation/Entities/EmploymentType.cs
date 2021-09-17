@@ -8,6 +8,9 @@ namespace Vacation.Entities
 {
     public class EmploymentType
     {
-        
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public virtual List<User> Users { get; set; }
+
     }
 }
