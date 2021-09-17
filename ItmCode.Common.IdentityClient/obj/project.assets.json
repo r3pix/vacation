@@ -5254,24 +5254,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\WiktorMazurczak\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj",
+      "projectUniqueName": "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj",
       "projectName": "ItmCode.Common.Identity",
-      "projectPath": "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common.IdentityClient\\obj\\",
+      "projectPath": "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\ItmCode.Common.IdentityClient\\ItmCode.Common.Identity.csproj",
+      "packagesPath": "C:\\Users\\WiktorMazurczak\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\ItmCode.Common.IdentityClient\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\WiktorMazurczak\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5285,8 +5280,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common\\ItmCode.Common.csproj": {
-              "projectPath": "C:\\Users\\admin\\Desktop\\Vacation\\ItmCode.Common\\ItmCode.Common.csproj"
+            "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\ItmCode.Common\\ItmCode.Common.csproj": {
+              "projectPath": "C:\\Users\\WiktorMazurczak\\Documents\\Vacation\\ItmCode.Common\\ItmCode.Common.csproj"
             }
           }
         }
