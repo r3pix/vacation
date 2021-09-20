@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PresenceSystem.Models;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 using PresentSystem.Models;
 using Vacation.Entities;
 using Vacation.Exceptions;
+using Vacation.Models;
 
 namespace PresentSystem.Services
 {
@@ -15,6 +19,7 @@ namespace PresentSystem.Services
     {
         private readonly PresenceSystemDbContext _dbContext;
         private readonly IMapper _mapper;
+        public string[] allowedColumnNames = new[] { nameof(EmploymentType.Id),nameof(EmploymentType.Type)};
 
         public EmploymentTypeService(PresenceSystemDbContext dbContext, IMapper mapper)
         {
@@ -60,13 +65,47 @@ namespace PresentSystem.Services
 
         }
 
-        public async Task<IEnumerable<EmploymentTypeModel>> GetAll()
+        public async Task<Pageable<EmploymentTypeModel>> GetAll(GetPageableQuery query)
         {
-            var types =await _dbContext.EmploymentTypes.ToListAsync();
 
-            var typesMapped = _mapper.Map<List<EmploymentTypeModel>>(types);
+            var baseQuery = _dbContext.EmploymentTypes.Where(r => query.SearchTerm == null || (r.Type.ToLower().Contains(query.SearchTerm.ToLower())));
 
-            return typesMapped;
+            if (!string.IsNullOrEmpty(query.OrderBy))
+            {
+
+                if (allowedColumnNames.Contains(query.OrderBy))
+                {
+                    var columnsSelector = new Dictionary<string, Expression<Func<EmploymentType, object>>>()
+                    {
+                        {nameof(EmploymentType.Type), r=>r.Type},
+                        {nameof(EmploymentType.Id), r => r.Id}
+
+                    };
+
+                    var selectedColumn = columnsSelector[query.OrderBy];
+
+                    if (!query.Desc)
+                    {
+                        baseQuery = baseQuery.OrderBy(selectedColumn);
+                    }
+                    else
+                        baseQuery = baseQuery.OrderByDescending(selectedColumn);
+                }
+            }
+
+            var types = await baseQuery
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .ToListAsync();
+
+
+            var total = await _dbContext.Departments.CountAsync();
+            var result = _mapper.Map<List<EmploymentTypeModel>>(types);
+
+            var pagedResult = new Pageable<EmploymentTypeModel>();
+            pagedResult.Result = result;
+            pagedResult.Total = total;
+            return pagedResult;
         }
 
         public async Task<EmploymentTypeModel> GetById(int id)
