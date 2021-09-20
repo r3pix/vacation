@@ -45,7 +45,7 @@ namespace Vacation.Controllers
         }
 
         [HttpGet("pageable")]
-        public async Task<ActionResult<Pageable<DepartmentModel>>> GetAll([FromQuery]DepartmentQuerry query)
+        public async Task<ActionResult<Pageable<DepartmentModel>>> GetAll([FromQuery]GetPageableQuery query)
         {
             var departments = await _service.GetAll(query);
             return Ok(departments);
