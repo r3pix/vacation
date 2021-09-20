@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vacation.Entities;
 
 namespace Vacation.Migrations
 {
     [DbContext(typeof(PresenceSystemDbContext))]
-    partial class VacationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210920065053_listofpresence_place_tables_added")]
+    partial class listofpresence_place_tables_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

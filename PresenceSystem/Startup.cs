@@ -16,6 +16,7 @@ using FluentValidation.AspNetCore;
 using ItmCode.Common.Identity.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using PresenceSystem.Services;
 using PresentSystem.Services;
 using Vacation.Entities;
 using Vacation.Middleware;
@@ -50,6 +51,7 @@ namespace Vacation
             services.AddScoped<IDepartmentService,DepartmentService>();
             services.AddScoped<IJobTitleService,JobTitleService>();
             services.AddScoped<IEmploymentTypeService,EmploymentTypeService>();
+            services.AddScoped<IPlaceService,PlaceService>();
 
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddControllers().AddFluentValidation();

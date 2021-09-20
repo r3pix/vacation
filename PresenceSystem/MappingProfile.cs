@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using PresenceSystem.Entities;
 using PresenceSystem.Models;
 using Vacation.Entities;
 using Vacation.Models;
@@ -44,6 +45,10 @@ namespace Vacation
                 .ForMember(x => x.EmploymentType, m => m.MapFrom(c => c.EmploymentType.Type))
                 .ForMember(x => x.JobTitle, m => m.MapFrom(c => c.JobTitle.TitleName))
                 .ForMember(x=>x.ModifiedById,m=>m.MapFrom(c=>c.ModifiedById));
+
+            CreateMap<Place, PlaceModel>()
+                .ForMember(x => x.Id, m => m.MapFrom(c => c.Id))
+                .ForMember(x=>x.PlaceName,m=>m.MapFrom(c=>c.PlaceName));
         }
             
     }
