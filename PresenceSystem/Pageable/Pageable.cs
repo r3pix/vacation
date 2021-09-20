@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace PresenceSystem.Pageable
 {
-    public class Pageable
+    public class Pageable<T>
     {
+        public int Total { get; set; }
+        public IEnumerable<T> Result { get; set; }
     }
 }
