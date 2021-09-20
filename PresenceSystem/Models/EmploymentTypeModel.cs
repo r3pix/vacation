@@ -7,6 +7,7 @@ namespace PresenceSystem.Models
 {
     public class EmploymentTypeModel
     {
+        public int Id { get; set; }
         public string Type { get; set; }
     }
 }
