@@ -7,7 +7,6 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PresenceSystem.Pageable;
 using PresenceSystem.Pageable.PresenceSystem.Pageable;
-using PresenceSystem.Querries;
 using Vacation.Entities;
 using Vacation.Exceptions;
 using Vacation.Models;
@@ -62,7 +61,7 @@ namespace Vacation.Services
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<Pageable<DepartmentModel>> GetAll(DepartmentQuerry query)
+        public async Task<Pageable<DepartmentModel>> GetAll(GetPageableQuery query)
         {
             
             var baseQuery = _dbContext.Departments.Where(r=> query.SearchTerm==null || (r.DepartmentName.ToLower().Contains(query.SearchTerm.ToLower())));

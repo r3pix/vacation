@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PresenceSystem.Pageable;
 using PresenceSystem.Pageable.PresenceSystem.Pageable;
-using PresenceSystem.Querries;
 using Vacation.Models;
 using Vacation.Services;
 
