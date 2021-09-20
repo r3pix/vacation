@@ -49,6 +49,18 @@ namespace Vacation
             CreateMap<Place, PlaceModel>()
                 .ForMember(x => x.Id, m => m.MapFrom(c => c.Id))
                 .ForMember(x=>x.PlaceName,m=>m.MapFrom(c=>c.PlaceName));
+
+            CreateMap<ListOfPresence, ListOfPresenceTableModel>()
+                .ForMember(x => x.CreatedById, m => m.MapFrom(c => c.CreatedById))
+                .ForMember(x => x.Date, m => m.MapFrom(c => c.Date))
+                .ForMember(x => x.Id, m => m.MapFrom(c => c.Id))
+                .ForMember(x => x.ModifiedById, m => m.MapFrom(c => c.ModifiedById))
+                .ForMember(x => x.TimeCreated, m => m.MapFrom(c => c.TimeCreated))
+                .ForMember(x => x.TimeModified, m => m.MapFrom(c => c.TimeModified))
+                .ForMember(x => x.TimeStart, m => m.MapFrom(c => c.TimeStart))
+                .ForMember(x => x.User, m => m.MapFrom(c => c.User.DisplayName))
+                .ForMember(x => x.Place, m => m.MapFrom(c => c.Place.PlaceName))
+                .ForMember(x => x.TimeStop, m => m.MapFrom(c => c.TimeStop));
         }
             
     }

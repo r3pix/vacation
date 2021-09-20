@@ -52,6 +52,7 @@ namespace Vacation
             services.AddScoped<IJobTitleService,JobTitleService>();
             services.AddScoped<IEmploymentTypeService,EmploymentTypeService>();
             services.AddScoped<IPlaceService,PlaceService>();
+            services.AddScoped<IListOfPresenceService,ListOfPresenceService>();
 
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddControllers().AddFluentValidation();

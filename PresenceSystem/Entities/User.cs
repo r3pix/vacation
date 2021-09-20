@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PresenceSystem.Entities;
 using Vacation.Enums;
 
 namespace Vacation.Entities
@@ -26,6 +27,7 @@ namespace Vacation.Entities
         public virtual JobTitle JobTitle { get; set; }
         public virtual Department Department { get; set; }
         public virtual EmploymentType EmploymentType { get; set; }
+        public virtual List<ListOfPresence> ListOfPresences { get; set; }
 
 
     }
