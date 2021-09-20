@@ -22,11 +22,9 @@ namespace Vacation
                 .ForMember(x => x.EmploymentTypeId, m => m.MapFrom(c => c.EmploymentTypeId))
                 .ForMember(x=>x.JobTitleId,m=>m.MapFrom(c=>c.JobTitleId));
 
-
             CreateMap<CreateDepartmentModel, Department>()
                 .ForMember(x => x.DepartmentName, m => m.MapFrom(c => c.DepartmentName));
-                
-
+            
             CreateMap<Department,DepartmentModel>()
                 .ForMember(x=>x.DepartmentName,m=>m.MapFrom(c=>c.DepartmentName))
                 .ForMember(x=>x.Id,m=>m.MapFrom(c=>c.Id));
