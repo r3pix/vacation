@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 using Vacation.Entities;
 using Vacation.Exceptions;
 using Vacation.Models;
@@ -14,6 +17,8 @@ namespace Vacation.Services
     {
         private readonly Entities.PresenceSystemDbContext _dbContext;
         private readonly IMapper _mapper;
+        public string[] allowedColumnNames = new[] {nameof(JobTitle.Id),nameof(JobTitle.Id)};
+
 
         public JobTitleService(Entities.PresenceSystemDbContext dbContext, IMapper mapper)
         {
@@ -60,12 +65,46 @@ namespace Vacation.Services
         }
         
         
-        public async Task<IEnumerable<JobTitleModel>> GetAll()
+        public async Task<Pageable<JobTitleModel>> GetAll(GetPageableQuery query)
         {
-            var titles = await _dbContext.JobTitles.ToListAsync();
+            var baseQuery = _dbContext.JobTitles.Where(r => query.SearchTerm == null || (r.TitleName.ToLower().Contains(query.SearchTerm.ToLower())));
+
+            if (!string.IsNullOrEmpty(query.OrderBy))
+            {
+
+                if (allowedColumnNames.Contains(query.OrderBy))
+                {
+                    var columnsSelector = new Dictionary<string, Expression<Func<JobTitle, object>>>()
+                    {
+                        {nameof(JobTitle.TitleName), r => r.TitleName},
+                        {nameof(JobTitle.Id), r => r.Id}
+
+                    };
+
+                    var selectedColumn = columnsSelector[query.OrderBy];
+
+                    if (!query.Desc)
+                    {
+                        baseQuery = baseQuery.OrderBy(selectedColumn);
+                    }
+                    else
+                        baseQuery = baseQuery.OrderByDescending(selectedColumn);
+                }
+            }
+
+            var titles = await baseQuery
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .ToListAsync();
+
+
+            var total = await _dbContext.JobTitles.CountAsync();
             var result = _mapper.Map<List<JobTitleModel>>(titles);
 
-            return result;
+            var pagedResult = new Pageable<JobTitleModel>();
+            pagedResult.Result = result;
+            pagedResult.Total = total;
+            return pagedResult;
         }
 
         public async Task<JobTitleModel> GetById(int id)

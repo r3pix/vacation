@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 using Vacation.Models;
 using Vacation.Services;
 
@@ -41,10 +43,10 @@ namespace Vacation.Controllers
                 return Ok();
             }
 
-            [HttpGet]
-            public async Task<ActionResult<IEnumerable<JobTitleModel>>> GetAll()
+            [HttpGet("pageable")]
+            public async Task<ActionResult<Pageable<JobTitleModel>>> GetAll([FromQuery]GetPageableQuery query)
             {
-                var departments = await _service.GetAll();
+                var departments = await _service.GetAll(query);
                 return Ok(departments);
             }
 
