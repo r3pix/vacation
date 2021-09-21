@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PresenceSystem.Models;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 using PresenceSystem.Services;
 
 namespace PresenceSystem.Controllers
@@ -41,10 +43,10 @@ namespace PresenceSystem.Controllers
             return Ok();
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<PlaceModel>>> GetAll()
+        [HttpGet("pageable")]
+        public async Task<ActionResult<Pageable<PlaceModel>>> GetAll([FromQuery]GetPageableQuery query)
         {
-            var results = await _service.GetAll();
+            var results = await _service.GetAll(query);
             return Ok(results);
         }
 

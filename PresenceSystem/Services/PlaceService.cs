@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PresenceSystem.Entities;
 using PresenceSystem.Models;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 using Vacation.Entities;
 using Vacation.Exceptions;
+using Vacation.Models;
 
 namespace PresenceSystem.Services
 {
@@ -15,7 +19,7 @@ namespace PresenceSystem.Services
     {
         private readonly PresenceSystemDbContext _dbContext;
         private readonly IMapper _mapper;
-
+        public string[] allowedColumnNames = new[] {nameof(Place.Id),nameof(Place.PlaceName)};
         public PlaceService(PresenceSystemDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
@@ -44,13 +48,47 @@ namespace PresenceSystem.Services
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<PlaceModel>> GetAll()
+        public async Task<Pageable<PlaceModel>> GetAll(GetPageableQuery query)
         {
-            var places = await _dbContext.Places.ToListAsync();
 
-            var mappedResults = _mapper.Map<List<PlaceModel>>(places);
+            var baseQuery = _dbContext.Places.Where(r => query.SearchTerm == null || (r.PlaceName.ToLower().Contains(query.SearchTerm.ToLower())));
 
-            return mappedResults;
+            if (!string.IsNullOrEmpty(query.OrderBy))
+            {
+
+                if (allowedColumnNames.Contains(query.OrderBy))
+                {
+                    var columnsSelector = new Dictionary<string, Expression<Func<Place, object>>>()
+                    {
+                        {nameof(Place.PlaceName), r => r.PlaceName},
+                        {nameof(Place.Id), r => r.Id}
+
+                    };
+
+                    var selectedColumn = columnsSelector[query.OrderBy];
+
+                    if (!query.Desc)
+                    {
+                        baseQuery = baseQuery.OrderBy(selectedColumn);
+                    }
+                    else
+                        baseQuery = baseQuery.OrderByDescending(selectedColumn);
+                }
+            }
+
+            var places = await baseQuery
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .ToListAsync();
+
+
+            var total = await _dbContext.Places.CountAsync();
+            var result = _mapper.Map<List<PlaceModel>>(places);
+
+            var pagedResult = new Pageable<PlaceModel>();
+            pagedResult.Result = result;
+            pagedResult.Total = total;
+            return pagedResult;
         }
 
         public async Task<PlaceModel> GetById(int id)
