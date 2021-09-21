@@ -92,13 +92,14 @@ namespace Vacation.Services
                 }
             }
 
+            var total = await baseQuery.CountAsync();
+
             var titles = await baseQuery
                 .Skip((query.PageNumber - 1) * query.PageSize)
                 .Take(query.PageSize)
                 .ToListAsync();
 
 
-            var total = await _dbContext.JobTitles.CountAsync();
             var result = _mapper.Map<List<JobTitleModel>>(titles);
 
             var pagedResult = new Pageable<JobTitleModel>();

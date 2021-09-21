@@ -97,13 +97,15 @@ namespace Vacation.Services
                 }
             }
 
+            var total = await baseQuery.CountAsync();
+
             var users = await baseQuery
                 .Skip((query.PageNumber - 1) * query.PageSize)
                 .Take(query.PageSize)
                 .ToListAsync();
 
 
-            var total = await _dbContext.Users.CountAsync();
+            
             var result = _mapper.Map<List<UserTableModel>>(users);
 
             var pagedResult = new Pageable<UserTableModel>();

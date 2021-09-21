@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using PresenceSystem.Entities;
 using PresenceSystem.Models;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 using Vacation.Entities;
 using Vacation.Exceptions;
+using Vacation.Models;
 
 namespace PresenceSystem.Services
 {
@@ -15,7 +20,13 @@ namespace PresenceSystem.Services
     {
         private readonly PresenceSystemDbContext _dbContext;
         private readonly IMapper _mapper;
-
+        public string[] allowedColumnNames = new[]
+        {
+            nameof(ListOfPresence.CreatedById),nameof(ListOfPresence.Date),
+            nameof(ListOfPresence.Id),nameof(ListOfPresence.Place.PlaceName),
+            nameof(ListOfPresence.TimeCreated),nameof(ListOfPresence.TimeModified),nameof(ListOfPresence.TimeStart),
+            nameof(ListOfPresence.TimeStop),nameof(ListOfPresence.User.DisplayName),nameof(ListOfPresence.ModifiedById)
+        };
         public ListOfPresenceService(PresenceSystemDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
@@ -77,17 +88,60 @@ namespace PresenceSystem.Services
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<ListOfPresenceTableModel>> GetAll()
+        public async Task<Pageable<ListOfPresenceTableModel>> GetAll(GetPageableQuery query)
         {
-            var list = await _dbContext.ListOfPresences
-                .Include(x=>x.User)
-                .Include(x=>x.Place)
+            var baseQuery = _dbContext.ListOfPresences
+                .Include(x => x.User)
+                .Include(x => x.Place)
+                .Where(r=> query.SearchTerm==null ||(r.Place.PlaceName.ToLower().Contains(query.SearchTerm)) || 
+                           (r.User.DisplayName.ToLower().Contains(query.SearchTerm)));
+
+
+            if (!string.IsNullOrEmpty(query.OrderBy))
+            {
+
+                if (allowedColumnNames.Contains(query.OrderBy))
+                {
+                    var columnsSelector = new Dictionary<string, Expression<Func<ListOfPresence, object>>>()
+                    {
+                        {nameof(ListOfPresence.CreatedById), r => r.CreatedById},
+                        {nameof(ListOfPresence.Date), r => r.Date},
+                        {nameof(ListOfPresence.TimeCreated), r => r.TimeCreated},
+                        {nameof(ListOfPresence.TimeModified), r => r.TimeModified},
+                        {nameof(ListOfPresence.TimeStart), r => r.TimeStart},
+                        {nameof(ListOfPresence.TimeStop), r => r.TimeStop},
+                        {nameof(ListOfPresence.ModifiedById), r => r.ModifiedById},
+                        {nameof(ListOfPresence.Place.PlaceName), r => r.Place.PlaceName},
+                        {nameof(ListOfPresence.User.DisplayName), r => r.User.DisplayName},
+                        {nameof(ListOfPresence.Id), r => r.Id}
+
+                    };
+
+                    var selectedColumn = columnsSelector[query.OrderBy];
+
+                    if (!query.Desc)
+                    {
+                        baseQuery = baseQuery.OrderBy(selectedColumn);
+                    }
+                    else
+                        baseQuery = baseQuery.OrderByDescending(selectedColumn);
+                }
+            }
+
+            var total = await baseQuery.CountAsync();
+
+            var presences = await baseQuery
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
                 .ToListAsync();
 
-            var mappedList = _mapper.Map<List<ListOfPresenceTableModel>>(list);
 
-            return mappedList;
+            var result = _mapper.Map<List<ListOfPresenceTableModel>>(presences);
 
+            var pagedResult = new Pageable<ListOfPresenceTableModel>();
+            pagedResult.Result = result;
+            pagedResult.Total = total;
+            return pagedResult;
         }
 
         public async Task<ListOfPresenceTableModel> GetById(int id)

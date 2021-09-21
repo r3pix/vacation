@@ -76,13 +76,14 @@ namespace PresenceSystem.Services
                 }
             }
 
+            var total = await baseQuery.CountAsync();
+
             var places = await baseQuery
                 .Skip((query.PageNumber - 1) * query.PageSize)
                 .Take(query.PageSize)
                 .ToListAsync();
 
 
-            var total = await _dbContext.Places.CountAsync();
             var result = _mapper.Map<List<PlaceModel>>(places);
 
             var pagedResult = new Pageable<PlaceModel>();

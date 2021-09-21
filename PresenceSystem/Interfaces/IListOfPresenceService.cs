@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using PresenceSystem.Models;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 
 namespace PresenceSystem.Services
 {
@@ -9,7 +11,7 @@ namespace PresenceSystem.Services
         Task<int> Create(CreateListOfPresenceModel model);
         Task Update(UpdateListOfPresenceModel model, int id);
         Task Delete(int id);
-        Task<IEnumerable<ListOfPresenceTableModel>> GetAll();
+        Task<Pageable<ListOfPresenceTableModel>> GetAll(GetPageableQuery query);
         Task<ListOfPresenceTableModel> GetById(int id);
     }
 }

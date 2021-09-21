@@ -93,13 +93,13 @@ namespace PresentSystem.Services
                 }
             }
 
+            var total = await baseQuery.CountAsync();
+
             var types = await baseQuery
                 .Skip((query.PageNumber - 1) * query.PageSize)
                 .Take(query.PageSize)
                 .ToListAsync();
 
-
-            var total = await _dbContext.Departments.CountAsync();
             var result = _mapper.Map<List<EmploymentTypeModel>>(types);
 
             var pagedResult = new Pageable<EmploymentTypeModel>();
