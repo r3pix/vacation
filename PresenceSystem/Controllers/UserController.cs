@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PresenceSystem.Models;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 using Vacation.Models;
 using Vacation.Models.Identity;
 using Vacation.Services;
@@ -45,10 +47,10 @@ namespace Vacation.Controllers
             return Ok();
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserTableModel>>> GetAll()
+        [HttpGet("pageable")]
+        public async Task<ActionResult<Pageable<UserTableModel>>> GetAll([FromQuery]GetPageableQuery query)
         {
-            var results = await _service.GetAll();
+            var results = await _service.GetAll(query);
             return Ok(results);
         }
 

@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PresenceSystem.Entities;
 using PresenceSystem.Models;
+using PresenceSystem.Pageable;
+using PresenceSystem.Pageable.PresenceSystem.Pageable;
 using Vacation.Entities;
 using Vacation.Exceptions;
 using Vacation.Models;
@@ -15,7 +19,12 @@ namespace Vacation.Services
     {
         private readonly PresenceSystemDbContext _dbContext;
         private readonly IMapper _mapper;
-
+        public string[] allowedColumnNames = new[]
+        {
+            nameof(User.Id),nameof(User.CreatedById),nameof(User.DateCreated),
+            nameof(User.DateModified),nameof(User.DisplayName),nameof(User.Email),nameof(User.ModifiedById),
+            nameof(User.JobTitle.TitleName),nameof(User.Department.DepartmentName),nameof(User.EmploymentType.Type)
+        };
         public UserService(PresenceSystemDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
@@ -48,15 +57,59 @@ namespace Vacation.Services
 
         }
 
-        public async Task<IEnumerable<UserTableModel>> GetAll()
+        public async Task<Pageable<UserTableModel>> GetAll(GetPageableQuery query)
         {
-            var results = await _dbContext.Users.Include(x=>x.Department)
-                .Include(x=>x.EmploymentType).Include(x=>x.JobTitle)
+            var baseQuery = _dbContext.Users.Include(x => x.Department)
+                .Include(x => x.EmploymentType).Include(x => x.JobTitle)
+                .Where(r=> query.SearchTerm==null ||(r.DisplayName.ToLower().Contains(query.SearchTerm.ToLower())) ||
+                           (r.Email.ToLower().Contains(query.SearchTerm.ToLower())) || (r.Department.DepartmentName.ToLower().Contains(query.SearchTerm.ToLower())) ||
+                           (r.JobTitle.TitleName.ToLower().Contains(query.SearchTerm.ToLower())) || (r.EmploymentType.Type.ToLower().Contains(query.SearchTerm.ToLower())));
+
+
+            if (!string.IsNullOrEmpty(query.OrderBy))
+            {
+
+                if (allowedColumnNames.Contains(query.OrderBy))
+                {
+                    var columnsSelector = new Dictionary<string, Expression<Func<User, object>>>()
+                    {
+                        {nameof(User.CreatedById), r => r.CreatedById},
+                        {nameof(User.DateCreated), r => r.DateCreated},
+                        {nameof(User.DateModified), r => r.DateModified},
+                        {nameof(User.Department.DepartmentName), r => r.Department.DepartmentName},
+                        {nameof(User.DisplayName), r => r.DisplayName},
+                        {nameof(User.Email), r => r.Email},
+                        {nameof(User.EmploymentType.Type), r => r.EmploymentType.Type},
+                        {nameof(User.JobTitle.TitleName), r => r.JobTitle.TitleName},
+                        {nameof(User.ModifiedById), r => r.ModifiedById},
+                        {nameof(User.Id), r => r.Id}
+
+                    };
+
+                    var selectedColumn = columnsSelector[query.OrderBy];
+
+                    if (!query.Desc)
+                    {
+                        baseQuery = baseQuery.OrderBy(selectedColumn);
+                    }
+                    else
+                        baseQuery = baseQuery.OrderByDescending(selectedColumn);
+                }
+            }
+
+            var users = await baseQuery
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
                 .ToListAsync();
 
-            var mappedResults = _mapper.Map<List<UserTableModel>>(results);
 
-            return mappedResults;
+            var total = await _dbContext.Users.CountAsync();
+            var result = _mapper.Map<List<UserTableModel>>(users);
+
+            var pagedResult = new Pageable<UserTableModel>();
+            pagedResult.Result = result;
+            pagedResult.Total = total;
+            return pagedResult;
         }
 
         public async Task<UserTableModel> GetById(int id)
