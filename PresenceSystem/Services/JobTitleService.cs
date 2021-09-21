@@ -29,7 +29,7 @@ namespace Vacation.Services
         public async Task<int> Create(CreateJobTitleModel model)
         {
             var title = new JobTitle();
-            title.TitleName = model.TitleName;
+            title.JobTitleName = model.JobTitleName;
 
             _dbContext.JobTitles.Add(title);
             await _dbContext.SaveChangesAsync();
@@ -59,7 +59,7 @@ namespace Vacation.Services
                 throw new NotFoundException("Not found");
             }
 
-            title.TitleName = model.TitleName;
+            title.JobTitleName = model.JobTitleName;
             _dbContext.JobTitles.Update(title);
             await _dbContext.SaveChangesAsync();
         }
@@ -67,7 +67,7 @@ namespace Vacation.Services
         
         public async Task<Pageable<JobTitleModel>> GetAll(GetPageableQuery query)
         {
-            var baseQuery = _dbContext.JobTitles.Where(r => query.SearchTerm == null || (r.TitleName.ToLower().Contains(query.SearchTerm.ToLower())));
+            var baseQuery = _dbContext.JobTitles.Where(r => query.SearchTerm == null || (r.JobTitleName.ToLower().Contains(query.SearchTerm.ToLower())));
 
             if (!string.IsNullOrEmpty(query.OrderBy))
             {
@@ -76,7 +76,7 @@ namespace Vacation.Services
                 {
                     var columnsSelector = new Dictionary<string, Expression<Func<JobTitle, object>>>()
                     {
-                        {nameof(JobTitle.TitleName), r => r.TitleName},
+                        {nameof(JobTitle.JobTitleName), r => r.JobTitleName},
                         {nameof(JobTitle.Id), r => r.Id}
 
                     };

@@ -23,7 +23,7 @@ namespace Vacation.Services
         {
             nameof(User.Id),nameof(User.CreatedById),nameof(User.DateCreated),
             nameof(User.DateModified),nameof(User.DisplayName),nameof(User.Email),nameof(User.ModifiedById),
-            nameof(User.JobTitle.TitleName),nameof(User.Department.DepartmentName),nameof(User.EmploymentType.Type)
+            nameof(User.JobTitle.JobTitleName),nameof(User.Department.DepartmentName),nameof(User.EmploymentType.EmploymentTypeName)
         };
         public UserService(PresenceSystemDbContext dbContext, IMapper mapper)
         {
@@ -63,7 +63,7 @@ namespace Vacation.Services
                 .Include(x => x.EmploymentType).Include(x => x.JobTitle)
                 .Where(r=> query.SearchTerm==null ||(r.DisplayName.ToLower().Contains(query.SearchTerm.ToLower())) ||
                            (r.Email.ToLower().Contains(query.SearchTerm.ToLower())) || (r.Department.DepartmentName.ToLower().Contains(query.SearchTerm.ToLower())) ||
-                           (r.JobTitle.TitleName.ToLower().Contains(query.SearchTerm.ToLower())) || (r.EmploymentType.Type.ToLower().Contains(query.SearchTerm.ToLower())));
+                           (r.JobTitle.JobTitleName.ToLower().Contains(query.SearchTerm.ToLower())) || (r.EmploymentType.EmploymentTypeName.ToLower().Contains(query.SearchTerm.ToLower())));
 
 
             if (!string.IsNullOrEmpty(query.OrderBy))
@@ -79,8 +79,8 @@ namespace Vacation.Services
                         {nameof(User.Department.DepartmentName), r => r.Department.DepartmentName},
                         {nameof(User.DisplayName), r => r.DisplayName},
                         {nameof(User.Email), r => r.Email},
-                        {nameof(User.EmploymentType.Type), r => r.EmploymentType.Type},
-                        {nameof(User.JobTitle.TitleName), r => r.JobTitle.TitleName},
+                        {nameof(User.EmploymentType.EmploymentTypeName), r => r.EmploymentType.EmploymentTypeName},
+                        {nameof(User.JobTitle.JobTitleName), r => r.JobTitle.JobTitleName},
                         {nameof(User.ModifiedById), r => r.ModifiedById},
                         {nameof(User.Id), r => r.Id}
 

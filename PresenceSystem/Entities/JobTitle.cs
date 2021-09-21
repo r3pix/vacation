@@ -9,7 +9,7 @@ namespace Vacation.Entities
     public class JobTitle
     {
         public int Id { get; set; }
-        public string TitleName { get; set; }
+        public string JobTitleName { get; set; }
 
         public virtual List<User> Users { get; set; }
     }

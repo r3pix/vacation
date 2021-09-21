@@ -7,6 +7,6 @@ namespace Vacation.Models
 {
     public class CreateJobTitleModel
     {
-        public string TitleName { get; set; }
+        public string JobTitleName { get; set; }
     }
 }

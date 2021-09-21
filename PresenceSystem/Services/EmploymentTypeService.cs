@@ -19,7 +19,7 @@ namespace PresentSystem.Services
     {
         private readonly PresenceSystemDbContext _dbContext;
         private readonly IMapper _mapper;
-        public string[] allowedColumnNames = new[] { nameof(EmploymentType.Id),nameof(EmploymentType.Type)};
+        public string[] allowedColumnNames = new[] { nameof(EmploymentType.Id),nameof(EmploymentType.EmploymentTypeName)};
 
         public EmploymentTypeService(PresenceSystemDbContext dbContext, IMapper mapper)
         {
@@ -30,7 +30,7 @@ namespace PresentSystem.Services
         public async Task<int> Create(CreateEmploymentTypeModel model)
         {
             var type = new EmploymentType();
-            type.Type = model.Type;
+            type.EmploymentTypeName = model.EmploymentTypeName;
 
             _dbContext.EmploymentTypes.Add(type);
             await _dbContext.SaveChangesAsync();
@@ -58,7 +58,7 @@ namespace PresentSystem.Services
                 throw new NotFoundException("Employment type with provided credentials does not exist");
             }
 
-            type.Type = model.Type;
+            type.EmploymentTypeName = model.EmploymentTypeName;
             _dbContext.EmploymentTypes.Update(type);
 
             await _dbContext.SaveChangesAsync();
@@ -68,7 +68,7 @@ namespace PresentSystem.Services
         public async Task<Pageable<EmploymentTypeModel>> GetAll(GetPageableQuery query)
         {
 
-            var baseQuery = _dbContext.EmploymentTypes.Where(r => query.SearchTerm == null || (r.Type.ToLower().Contains(query.SearchTerm.ToLower())));
+            var baseQuery = _dbContext.EmploymentTypes.Where(r => query.SearchTerm == null || (r.EmploymentTypeName.ToLower().Contains(query.SearchTerm.ToLower())));
 
             if (!string.IsNullOrEmpty(query.OrderBy))
             {
@@ -77,7 +77,7 @@ namespace PresentSystem.Services
                 {
                     var columnsSelector = new Dictionary<string, Expression<Func<EmploymentType, object>>>()
                     {
-                        {nameof(EmploymentType.Type), r=>r.Type},
+                        {nameof(EmploymentType.EmploymentTypeName), r=>r.EmploymentTypeName},
                         {nameof(EmploymentType.Id), r => r.Id}
 
                     };

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vacation.Entities;
 
 namespace Vacation.Migrations
 {
     [DbContext(typeof(PresenceSystemDbContext))]
-    partial class VacationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210921090836_database_edited_properties_renamed")]
+    partial class database_edited_properties_renamed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

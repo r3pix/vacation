@@ -7,6 +7,6 @@ namespace PresentSystem.Models
 {
     public class CreateEmploymentTypeModel
     {
-        public string Type { get; set; }      
+        public string EmploymentTypeName { get; set; }      
     }
 }

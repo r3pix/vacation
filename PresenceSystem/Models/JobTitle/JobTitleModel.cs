@@ -8,6 +8,6 @@ namespace Vacation.Models
     public class JobTitleModel
     {
         public int Id { get; set; }
-        public string TitleName { get; set; }
+        public string JobTitleName { get; set; }
     }
 }
